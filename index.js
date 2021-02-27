@@ -22,9 +22,9 @@ client.on("voiceStreamingStop", (member, voiceChannel) => {
 
 client.on("voiceStateUpdate", (oldState, newState) => {
     const camRole = oldState.guild.roles.cache.get(config.camRole)
-    if(newState.selfVideo && !oldState.member.roles.cache.has(camRole.id)){
+    if(newState.selfVideo && !oldState.member.roles.cache.has(camRole.id) && !oldState.selfVideo){
         oldState.member.roles.add(camRole,  `En cam sur inlove`)
-    }else if(!newState.selfVideo && oldState.member.roles.cache.has(camRole.id)){
+    }else if(!newState.selfVideo && oldState.member.roles.cache.has(camRole.id)  && !oldState.selfVideo){
         oldState.member.roles.remove(camRole,  `${oldState.member.user.tag} n'est plus cam sur inlove`)
 
     }
